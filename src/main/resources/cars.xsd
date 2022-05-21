@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://sri4.pattomaszewski/cars"
+        targetNamespace="http://sri4.pattomaszewski/cars">
+
+    <xs:complexType name="carDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="modelName" type="xs:string"/>
+            <xs:element name="createDate" type="xs:date"/>
+            <xs:element name="doorNumber" type="xs:int"/>
+            <xs:element name="color" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getCarsRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCarsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cars" type="tns:carDto" maxOccurs="unbounded"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCarByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carId" type="xs:decimal"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCarByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="car" type="tns:carDto" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="car" type="tns:carDto"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carId" type="xs:decimal"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
